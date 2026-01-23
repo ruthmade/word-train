@@ -172,18 +172,25 @@
             bottom: -30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(143, 163, 154, 0.4);
-            border: 2px solid #8FA39A;
-            width: 28px;
-            height: 28px;
+            background: rgba(212, 168, 149, 0.6);
+            border: 1px solid #D4A895;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            font-size: 1em;
+            font-size: 0.9em;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #4A4238;
-            font-weight: bold;
+            font-weight: normal;
+            z-index: 100;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .remove-btn:hover {
+            opacity: 1;
         }
 
         .remove-btn:active {
@@ -344,8 +351,8 @@
             // CVC o words
             'bog', 'cog', 'dog', 'fog', 'hog', 'jog', 'log', 'box', 'fox', 'not',
             'cot', 'dot', 'got', 'hot', 'lot', 'pot', 'rot', 'tot', 'cop', 'hop',
-            'mop', 'pop', 'top', 'bob', 'cob', 'job', 'mob', 'rob', 'sob', 'god',
-            'nod', 'pod', 'rod', 'sod', 'mom', 'tom',
+            'mop', 'pop', 'top', 'bop', 'bob', 'cob', 'job', 'mob', 'rob', 'sob', 'god',
+            'nod', 'pod', 'rod', 'sod', 'mom', 'tom', 'bot',
             // Other o patterns
             'oak', 'oar', 'oat', 'odd', 'ode', 'off', 'oft', 'oil', 'old', 'one',
             'opt', 'orb', 'ore', 'our', 'out', 'owe', 'owl', 'own', 'ox',
@@ -379,8 +386,8 @@
         function createLetterGrid() {
             const grid = document.getElementById('letters');
             
-            // Mix consonants and vowels
-            const allLetters = [...consonants.slice(0, 9), ...vowels, ...consonants.slice(9)];
+            // All letters sorted alphabetically
+            const allLetters = [...consonants, ...vowels].sort();
             
             allLetters.forEach(function(letter) {
                 const btn = document.createElement('button');
